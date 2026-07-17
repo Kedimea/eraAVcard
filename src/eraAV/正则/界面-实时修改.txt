@@ -1,7 +1,0 @@
-```html
-<body>
-<script>
-$('body').load('http://localhost:5500/dist/eraAV/界面/状态栏/index.html')
-</script>
-</body>
-```
