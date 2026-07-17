@@ -1,0 +1,6 @@
+{
+  "name": "星耀片场管理面板",
+  "description": "星耀片场影视管理面板，提供立项新片企划、演员班底调度、服装与状态监控、商业商店及还款预算的完整决策体验。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

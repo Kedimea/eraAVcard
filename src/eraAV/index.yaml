@@ -1,0 +1,255 @@
+# yaml-language-server: $schema=https://testingcf.jsdelivr.net/gh/StageDog/tavern_sync/dist/schema/character.zh.json
+头像: 头像
+版本: '1.0.0'
+作者: ''
+备注: '星耀片场管理面板（酒馆消息楼层 iframe 版）'
+
+第一条消息:
+  - 文件: 第一条消息/0
+
+角色描述: ''
+
+锚点: {}
+
+世界书名称: 星耀片场
+条目:
+  - 名称: 人物 - 宫下浅夏
+    启用: true
+    激活策略:
+      类型: 绿灯
+      关键字:
+        - 宫下浅夏
+        - 妹妹
+        - 浅夏
+    插入位置:
+      类型: 角色定义之前
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书\人物_-_宫下浅夏
+
+  - 名称: '[initvar]变量初始化勿开'
+    启用: false
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 角色定义之前
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书\[initvar]变量初始化勿开
+
+  - 名称: 变量更新规则
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书\变量更新规则
+
+  - 名称: 变量输出格式
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书\变量输出格式
+
+  - 名称: 变量列表
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 100
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书\变量列表
+
+  - 名称: 单api正文格式
+    启用: true
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 110
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书\单api正文格式
+
+  - 名称: 多api正文格式
+    启用: false
+    激活策略:
+      类型: 蓝灯
+    插入位置:
+      类型: 指定深度
+      角色: 系统
+      深度: 0
+      顺序: 110
+    激活概率: 100
+    递归:
+      不可被其他条目激活: false
+      不可激活其他条目: false
+    文件: 世界书\多api正文格式
+
+扩展字段:
+  正则:
+    - 正则名称: '[不发送]去除界面占位符'
+      id: 61050849-b194-4622-abfa-437b9dc3ee4f
+      启用: true
+      查找表达式: <StatusPlaceHolderImpl/>
+      内容: ''
+      来源:
+        用户输入: false
+        AI输出: true
+        思维链: false
+      作用于:
+        仅格式显示: false
+        仅格式提示词: true
+
+    - 正则名称: 状态栏美化
+      id: regex-23c862ac-691a-4024-84d8-d3573dff3231
+      启用: true
+      在编辑时运行: true
+      查找表达式: <StatusPlaceHolderImpl/>
+      文件: 正则\状态栏美化
+      来源:
+        用户输入: false
+        AI输出: true
+        思维链: false
+      作用于:
+        仅格式显示: true
+        仅格式提示词: false
+
+    - 正则名称: 界面-实时修改
+      id: f91fa09b-6c12-4f1f-92a4-2d734e4f703a
+      启用: false
+      查找表达式: <StatusPlaceHolderImpl/>
+      文件: 正则\界面-实时修改
+      来源:
+        用户输入: false
+        AI输出: true
+        思维链: false
+      作用于:
+        仅格式显示: true
+        仅格式提示词: false
+
+    - 正则名称: '[折叠]完整变量更新'
+      id: be29eac7-dd06-4e72-a330-3f3e1afa602d
+      启用: true
+      查找表达式: /<update(?:variable)?>\s*(.*)\s*<\/update(?:variable)?>/gsi
+      文件: 正则\[折叠]完整变量更新
+      来源:
+        用户输入: true
+        AI输出: true
+        思维链: false
+      作用于:
+        仅格式显示: true
+        仅格式提示词: false
+
+    - 正则名称: '[折叠]变量更新中'
+      id: b25e9b5b-814e-41b6-8071-4f3bd6c902fd
+      启用: true
+      查找表达式: /<update(?:variable)?>(?!.*<\/update(?:variable)?>)\s*(.*)\s*$/gsi
+      文件: 正则\[折叠]变量更新中
+      来源:
+        用户输入: true
+        AI输出: true
+        思维链: false
+      作用于:
+        仅格式显示: true
+        仅格式提示词: false
+
+    - 正则名称: '[不发送]去除变量更新'
+      id: 1ee92d1d-0349-4744-88b2-9237a9df4dfb
+      启用: true
+      查找表达式: /<update(?:variable)?>(?:(?!.*<\/update(?:variable)?>).*$|.*<\/update(?:variable)?>)/gsi
+      内容: ''
+      来源:
+        用户输入: true
+        AI输出: true
+        思维链: false
+      作用于:
+        仅格式显示: false
+        仅格式提示词: true
+      最大深度: 3
+
+  酒馆助手:
+    脚本库:
+      - 名称: MVU
+        id: f86c7048-e8ef-4208-8f06-d29d6c97ba1b
+        启用: true
+        类型: 脚本
+        内容: |-
+          // MagVarUpdate 内置的 Pinia 依赖会读取这些 Vue 生产常量；部分酒馆版本未预先定义它们。
+          // 必须在动态导入前写入，避免 Pinia 初始化中断后续前端挂载。
+          globalThis.__VUE_OPTIONS_API__ ??= true;
+          globalThis.__VUE_PROD_DEVTOOLS__ ??= false;
+          globalThis.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ ??= false;
+          await import('https://testingcf.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate/artifact/bundle.js');
+        导出时携带:
+          数据: true
+          按钮: true
+        按钮:
+          启用: true
+          按钮列表:
+            - 名称: 重新处理变量
+              可见: false
+            - 名称: 重新读取初始变量
+              可见: false
+            - 名称: 快照楼层
+              可见: false
+            - 名称: 重演楼层
+              可见: false
+            - 名称: 重试额外模型解析
+              可见: false
+            - 名称: 清除旧楼层变量
+              可见: false
+
+      - 名称: MVU ZOD变量结构
+        id: script-c5786a4a-8ff7-43ca-b1a3-282f81f92cdb
+        启用: true
+        类型: 脚本
+        内容: |-
+          import{registerMvuSchema as r}from'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';const e=z,t=e.z.object({目标:e.z.enum(['女优','男优','全局']).prefault('女优'),属性:e.z.string().prefault(''),数值:e.z.coerce.number().prefault(0),说明:e.z.string().prefault('')}).prefault({}),a=e.z.object({数量:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),描述:e.z.string().prefault(''),数值效果:e.z.string().prefault(''),效果:e.z.array(t).prefault([])}).prefault({}),u=e.z.object({类型:e.z.string().prefault(''),价格:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),描述:e.z.string().prefault(''),数值效果:e.z.string().prefault(''),效果:e.z.array(t).prefault([])}).prefault({}),f=e.z.preprocess(r=>{if('number'==typeof r||'string'==typeof r&&/^\d+$/.test(r)){const e=_.clamp(Math.round(Number(r)),1,10);return['D','C','B','A','S'][Math.ceil(e/2)-1]}return'string'==typeof r?r.toUpperCase():r},e.z.enum(['D','C','B','A','S'])).prefault('D'),l=e.z.object({ID:e.z.string().prefault(''),简介:e.z.string().prefault(''),所需男优数:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(1),所需女优数:e.z.coerce.number().transform(r=>Math.max(1,r)).prefault(1),基础质量:e.z.coerce.number().transform(r=>_.clamp(r,0,100)).prefault(70),等级:f,所需知名度:e.z.coerce.number().transform(r=>_.clamp(r,0,1e3)).prefault(0),预计报酬:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),拍摄要求:e.z.array(e.z.string()).prefault([]),来源:e.z.enum(['预设','AI','自拟','收藏','私人委托']).prefault('预设')}).prefault({}),p=e.z.object({标题:e.z.string().prefault(''),Rank:e.z.string().prefault('C'),描述:e.z.string().prefault(''),奖励:e.z.string().prefault(''),指定对象:e.z.string().prefault('不限'),执行者:e.z.array(e.z.string()).prefault([]),状态:e.z.enum(['可接取','进行中','已完成']).prefault('可接取')}).prefault({}),n=e.z.object({名称:e.z.string().prefault(''),描述:e.z.string().prefault(''),进度:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),目标:e.z.coerce.number().transform(r=>Math.max(1,r)).prefault(1),奖励:e.z.string().prefault(''),已解锁:e.z.boolean().prefault(!1)}).prefault({}),o=e.z.object({id:e.z.string().prefault(''),类型:e.z.enum(['购买','撤回购买','使用物品','丢弃物品','还债','接取任务','完成任务','拍摄企划','结束拍摄','日期推进','AI任务生成']).prefault('购买'),标题:e.z.string().prefault(''),详情:e.z.string().prefault(''),时间:e.z.string().prefault(''),可撤销:e.z.boolean().prefault(!0),商品名:e.z.string().prefault(''),商品分类:e.z.string().prefault(''),数量:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),金额:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0)}).prefault({}),c=e.z.object({基本信息:e.z.object({姓名:e.z.string().prefault(''),年龄:e.z.coerce.number().prefault(0),艺名:e.z.string().prefault(''),当前职业:e.z.string().prefault(''),简介:e.z.string().prefault(''),是否已签约:e.z.boolean().prefault(!1),已拍摄AV部数:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),片酬:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0)}).prefault({}),数值系统:e.z.object({演出经验:e.z.coerce.number().transform(r=>_.clamp(r>0&&r<=5?20*r:r,0,99)).prefault(0),好感度:e.z.coerce.number().transform(r=>_.clamp(r>0&&r<=5?20*r:r,0,99)).prefault(0),堕落度:e.z.coerce.number().transform(r=>_.clamp(r>0&&r<=5?20*r:r,0,99)).prefault(0),快感值:e.z.coerce.number().transform(r=>_.clamp(r,0,100)).prefault(0),体力值:e.z.coerce.number().transform(r=>_.clamp(r,0,100)).prefault(100)}).prefault({}),身体属性:e.z.object({口是否处女:e.z.boolean().prefault(!0),小穴是否处女:e.z.boolean().prefault(!0),后穴是否处女:e.z.boolean().prefault(!0)}).prefault({}),性经历:e.z.looseObject({与玩家性交次数:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),与其他男性性交次数:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0)}).prefault({}),敏感点开发度:e.z.object({口穴:e.z.coerce.number().transform(r=>_.clamp(r>0&&r<=5?20*r:r,0,99)).prefault(0),胸部:e.z.coerce.number().transform(r=>_.clamp(r>0&&r<=5?20*r:r,0,99)).prefault(0),小穴:e.z.coerce.number().transform(r=>_.clamp(r>0&&r<=5?20*r:r,0,99)).prefault(0),屁穴:e.z.coerce.number().transform(r=>_.clamp(r>0&&r<=5?20*r:r,0,99)).prefault(0),足部:e.z.coerce.number().transform(r=>_.clamp(r>0&&r<=5?20*r:r,0,99)).prefault(0)}).prefault({}),实时状态:e.z.object({上装:e.z.string().prefault(''),下装:e.z.string().prefault(''),内衣:e.z.string().prefault(''),内裤:e.z.string().prefault(''),袜子:e.z.string().prefault(''),鞋子:e.z.string().prefault(''),饰品:e.z.string().prefault(''),身体状态:e.z.object({口穴:e.z.string().prefault(''),胸部:e.z.string().prefault(''),足部:e.z.string().prefault(''),小穴:e.z.string().prefault(''),屁穴:e.z.string().prefault('')}).prefault({}),当前是否在场:e.z.boolean().prefault(!1),当前想法:e.z.string().prefault('')}).prefault({})}).prefault({}),s=e.z.object({基本信息:e.z.object({姓名:e.z.string().prefault(''),年龄:e.z.coerce.number().prefault(0),艺名:e.z.string().prefault(''),当前职业:e.z.string().prefault(''),简介:e.z.string().prefault(''),已拍摄AV部数:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),片酬:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0)}).prefault({}),数值系统:e.z.object({演出经验:e.z.coerce.number().transform(r=>_.clamp(r>0&&r<=5?20*r:r,0,99)).prefault(0),体力值:e.z.coerce.number().transform(r=>_.clamp(r,0,100)).prefault(100)}).prefault({}),实时状态:e.z.object({上装:e.z.string().prefault(''),下装:e.z.string().prefault(''),鞋子:e.z.string().prefault(''),当前想法:e.z.string().prefault('')}).prefault({})}).prefault({}),m=e.z.object({评分:e.z.coerce.number().transform(r=>_.clamp(r,0,10)).prefault(0),评价:e.z.string().prefault(''),总获利:e.z.coerce.number().prefault(0),上映日期:e.z.string().prefault(''),简介:e.z.string().prefault(''),观众评价:e.z.array(e.z.string()).prefault([]),男优:e.z.array(e.z.string()).prefault([]),女优:e.z.array(e.z.string()).prefault([]),上映后天数:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0)}).prefault({}),i=e.z.object({界面设置:e.z.object({主题:e.z.enum(['Galgame粉色主题','高级会所金色主题']).prefault('Galgame粉色主题'),控制台展开:e.z.boolean().prefault(!0)}).prefault({}),制作人:e.z.object({名称:e.z.string().prefault('{{user}}'),等级:e.z.coerce.number().transform(r=>Math.max(1,r)).prefault(1),经验值:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),下级所需经验:e.z.coerce.number().transform(r=>Math.max(1,r)).prefault(120)}).prefault({}),全局状态:e.z.object({日期时间:e.z.object({当前日期:e.z.string().prefault(''),当前时间:e.z.string().prefault('')}).prefault({}),位置:e.z.object({当前所在地点:e.z.string().prefault('')}).prefault({}),街道治安:e.z.enum(['动荡','戒备','安定']).prefault('安定'),知名度:e.z.coerce.number().transform(r=>_.clamp(r,0,1e3)).prefault(0),经济:e.z.object({现有余额:e.z.coerce.number().prefault(0),欠债系统:e.z.object({总还款次数:e.z.coerce.number().transform(()=>52).prefault(52),总阶段数:e.z.coerce.number().transform(()=>13).prefault(13),当前所处阶段:e.z.coerce.number().transform(r=>_.clamp(r,1,13)).prefault(1),当前阶段已还款次数:e.z.coerce.number().transform(r=>_.clamp(r,0,4)).prefault(0),当前阶段每次还款金额:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),下次还款日期:e.z.string().prefault(''),当前欠款逾期次数:e.z.coerce.number().transform(r=>_.clamp(r,0,2)).prefault(0),总已还款次数:e.z.coerce.number().transform(r=>_.clamp(r,0,52)).prefault(0),总获利:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),剩余欠债总额:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0)}).prefault({}),逾期机制:e.z.object({当前逾期女优:e.z.record(e.z.string().describe('女优名'),e.z.object({征用日期:e.z.string().prefault(''),预计归还日期:e.z.string().prefault('')}).prefault({})).prefault({})}).prefault({})}).prefault({})}).prefault({}),女优:e.z.record(e.z.string().describe('角色名'),c).prefault({}),男优:e.z.record(e.z.string().describe('角色名'),s).prefault({}),背包管理:e.z.object({消耗品:e.z.record(e.z.string(),a).transform(r=>_.pickBy(r,r=>r.数量>0)).prefault({}),情趣用品:e.z.record(e.z.string(),a).transform(r=>_.pickBy(r,r=>r.数量>0)).prefault({}),衣物:e.z.record(e.z.string(),a).transform(r=>_.pickBy(r,r=>r.数量>0)).prefault({}),特殊物品:e.z.record(e.z.string(),a).transform(r=>_.pickBy(r,r=>r.数量>0)).prefault({})}).prefault({}),商店:e.z.object({正常商品:e.z.record(e.z.string(),u).prefault({}),成人商品:e.z.record(e.z.string(),u).prefault({}),衣服:e.z.record(e.z.string(),u).prefault({}),道具:e.z.record(e.z.string(),u).prefault({})}).prefault({}),AV拍摄系统:e.z.object({当前拍摄:e.z.object({是否拍摄中:e.z.boolean().prefault(!1),当前作品名称:e.z.string().prefault(''),作品简介:e.z.string().prefault(''),选中剧本ID:e.z.string().prefault(''),拍摄者:e.z.object({男优:e.z.array(e.z.string()).prefault([]),女优:e.z.array(e.z.string()).prefault([])}).prefault({}),企划步骤:e.z.object({演员:e.z.array(e.z.string()).prefault([]),情境:e.z.string().prefault(''),地点:e.z.string().prefault(''),服装道具:e.z.array(e.z.string()).prefault([]),拍摄前准备:e.z.array(e.z.string()).prefault([])}).prefault({}),预计销量:e.z.coerce.number().transform(r=>Math.max(0,r)).prefault(0),预计收入构成:e.z.object({演员号召:e.z.coerce.number().prefault(0),道具加成:e.z.coerce.number().prefault(0),风险扣减:e.z.coerce.number().prefault(0)}).prefault({}),目前拍摄摘要:e.z.string().prefault(''),作品完成度:e.z.coerce.number().transform(r=>_.clamp(r,0,100)).prefault(0),步骤日志:e.z.array(e.z.string()).prefault([])}).prefault({}),剧本管理:e.z.object({可选现成剧本:e.z.record(e.z.string(),e.z.union([e.z.string(),l])).prefault({}),私人委托:e.z.record(e.z.string(),l).prefault({}),剧本库:e.z.record(e.z.string(),l).prefault({}),自行发挥:e.z.boolean().prefault(!1)}).prefault({}),市场数据:e.z.object({热门服饰:e.z.array(e.z.string()).prefault([]),热门角色类型:e.z.array(e.z.string()).prefault([])}).prefault({}),可选项:e.z.object({情境设定:e.z.array(e.z.string()).prefault([]),地点选择:e.z.array(e.z.string()).prefault([]),服装与道具:e.z.array(e.z.string()).prefault([]),拍摄前准备:e.z.array(e.z.string()).prefault([])}).prefault({}),过往作品:e.z.record(e.z.string().describe('作品名'),m).transform(r=>_(r).entries().takeRight(8).fromPairs().value()).prefault({})}).prefault({}),任务系统:e.z.object({悬赏大厅:e.z.record(e.z.string(),p).prefault({}),自选任务:e.z.record(e.z.string(),p).prefault({}),进行中:e.z.record(e.z.string(),p).prefault({}),已完成:e.z.record(e.z.string(),p).prefault({})}).prefault({}),成就系统:e.z.record(e.z.string(),n).prefault({}),操作队列:e.z.array(o).transform(r=>r.slice(-12)).prefault([]),$前端状态:e.z.object({体力道具使用记录:e.z.record(e.z.string(),e.z.boolean()).prefault({}),好感道具使用记录:e.z.record(e.z.string(),e.z.boolean()).prefault({}),剧本库已迁移:e.z.boolean().prefault(!1)}).prefault({})}).prefault({});$(()=>{r(i)});
+          //# sourceMappingURL=index.js.map
+        导出时携带:
+          数据: true
+          按钮: true
+
+      - 名称: 脚本-实时修改
+        id: df0c3d74-9798-4111-9059-df1317027036
+        启用: false
+        类型: 脚本
+        内容: // 开发期实时修改脚本已停用，避免角色卡在非本地环境引用 localhost。
+        导出时携带:
+          数据: true
+          按钮: true
+
+    变量: {}
